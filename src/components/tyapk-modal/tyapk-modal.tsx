@@ -23,7 +23,7 @@ export class TyapkModalComponent {
     this.close.emit('ok');
   }
 
-  closeModal(result: string) {
+  closeModal(result: 'cancel'|'close') {
     this._show = false;
     this.close.emit(result);
   }
