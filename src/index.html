@@ -22,10 +22,7 @@
     modal.addEventListener('close', function (result) {
       console.log('result', result);
     });
-    function vasya() {
-      modal.show = true;
-    }
   </script>
-  <button onclick="vasya()">Show Modal</button>
+  <button onclick="modal.show()">Show Modal</button>
 </body>
 </html>

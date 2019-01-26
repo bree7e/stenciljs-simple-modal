@@ -17,15 +17,20 @@ export namespace Components {
     * Header
     */
     'header': string;
-    'show': boolean;
+    /**
+    * show modal
+    */
+    'show': () => void;
   }
   interface TyapkModalAttributes extends StencilHTMLAttributes {
     /**
     * Header
     */
     'header'?: string;
+    /**
+    * Close event
+    */
     'onClose'?: (event: CustomEvent) => void;
-    'show'?: boolean;
   }
 }
 

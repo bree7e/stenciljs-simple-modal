@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, Prop, Method, State } from '@stencil/core';
 
 @Component({
   tag: 'tyapk-modal',
@@ -8,24 +8,28 @@ import { Component, Event, EventEmitter, Prop } from '@stencil/core';
 export class TyapkModalComponent {
   /** Header */
   @Prop() header: string;
-  @Prop({ 
-    mutable: true
-  }) 
-  show = false;
+  /** Whether the model is open or not */
+  @State() private _show = false;
+  /** Close event */
   @Event() private close: EventEmitter;
+  /** show modal */
+  @Method()
+  show() {
+    this._show = true;
+  }  
 
   handleClick() {
-    this.show = false;
+    this._show = false;
     this.close.emit('ok');
   }
 
   closeModal(result: string) {
-    this.show = false;
+    this._show = false;
     this.close.emit(result);
   }
  
   render() {
-    if (this.show) {
+    if (this._show) {
       return (
         <div>
           <div class="dialog">
@@ -46,8 +50,6 @@ export class TyapkModalComponent {
           <div class="overlay"></div>
         </div>
       );
-    } else {
-      return (<div></div>);
     }
   }
 
